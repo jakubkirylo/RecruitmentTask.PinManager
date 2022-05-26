@@ -1,0 +1,42 @@
+.pin-mgmt-container {
+  display: grid;
+  grid-template-columns: 30px 1fr 30px;
+  grid-template-rows: 30px 1fr 30px;
+  grid-template-areas:
+    ". . ."
+    ". pin-mgmt-content ."
+    ". . .";
+  overflow: hidden;
+  width: 100%;
+  width: 100%;
+}
+
+.pin-mgmt-content {
+  grid-area: pin-mgmt-content;
+  display: grid;
+  grid-template-rows: 30px 1fr;
+  grid-template-areas:
+    "pin-header"
+    "pin-content";
+}
+
+.pin-header {
+  grid-area: pin-header;
+  height: 50px;
+  display: grid;
+  grid-template-columns: 9fr 0.5fr;
+  grid-template-areas: "pin-header-title pin-header-actions";
+}
+
+.pin-header-title {
+  grid-area: pin-header-title;
+}
+
+.pin-header-title {
+  grid-area: pin-header-title;
+}
+
+.pin-content {
+  grid-area: pin-content;
+  background-color: blueviolet;
+}
