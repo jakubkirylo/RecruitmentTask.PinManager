@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+* {
+  font-family: Source Sans Pro, Roboto, Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+html {
+  width: 100vw;
+  height: 100vh;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#22345b+0,3c5892+100 */
+  background: #22345b; /* Old browsers */
+  background: -moz-linear-gradient(
+    top,
+    #22345b 0%,
+    #3c5892 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    #22345b 0%,
+    #3c5892 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #22345b 0%,
+    #3c5892 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#22345b', endColorstr='#3c5892',GradientType=0 ); /* IE6-9 */
+  overflow: hidden;
+}

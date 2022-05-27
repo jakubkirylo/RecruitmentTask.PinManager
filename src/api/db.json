@@ -1,0 +1,22 @@
+{
+  "GetPinList": {
+    "listVersion": 0,
+    "pins": [
+      {
+        "id": 1,
+        "alias:": "Pin for cleaning company",
+        "code": 112233
+      },
+      {
+        "id": 2,
+        "alias:": "Pin for girlfriend",
+        "code": 332211
+      },
+      {
+        "id": 3,
+        "alias:": "Pin for dog",
+        "code": 445566
+      }
+    ]
+  }
+}

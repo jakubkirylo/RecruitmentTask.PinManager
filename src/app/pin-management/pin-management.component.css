@@ -1,3 +1,8 @@
+/* :host {
+  overflow: hidden;
+}
+ */
+
 .pin-mgmt-container {
   display: grid;
   grid-template-columns: 30px 1fr 30px;
@@ -6,15 +11,12 @@
     ". . ."
     ". pin-mgmt-content ."
     ". . .";
-  overflow: hidden;
-  width: 100%;
-  width: 100%;
 }
 
 .pin-mgmt-content {
   grid-area: pin-mgmt-content;
   display: grid;
-  grid-template-rows: 30px 1fr;
+  grid-template-rows: 50px auto;
   grid-template-areas:
     "pin-header"
     "pin-content";
@@ -22,7 +24,6 @@
 
 .pin-header {
   grid-area: pin-header;
-  height: 50px;
   display: grid;
   grid-template-columns: 9fr 0.5fr;
   grid-template-areas: "pin-header-title pin-header-actions";
@@ -30,13 +31,46 @@
 
 .pin-header-title {
   grid-area: pin-header-title;
+  font: normal 32px Source Sans Pro, Roboto, "Helvetica Neue", sans-serif;
+  align-self: center;
 }
 
-.pin-header-title {
-  grid-area: pin-header-title;
+.pin-header-actions {
+  grid-area: pin-header-actions;
+  place-self: center;
 }
 
 .pin-content {
   grid-area: pin-content;
-  background-color: blueviolet;
+}
+
+.pin-table-columns {
+  grid-area: pin-content;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(3, 4fr);
+  align-items: center;
+}
+
+.pin-table {
+  height: calc(100vh - 125px);
+  overflow: auto;
+}
+
+.pin-row {
+  background-color: white;
+  margin: 5px 0px;
+  border-width: 1px;
+  border-radius: 10px;
+  padding: 15px;
+  color: black;
+}
+
+.pin-row-text {
+  color: black;
+  font-weight: 500;
+}
+
+.pin-row:hover {
+  background: lightgray;
 }
