@@ -5,6 +5,16 @@
   color: white;
 }
 
+/* #region colors */
+
+:root {
+  --tedee-indigo: #33cffd;
+}
+
+.indigo {
+  background-color: var(--tedee-indigo);
+}
+
 html {
   width: 100vw;
   height: 100vh;
@@ -28,3 +38,25 @@ html {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#22345b', endColorstr='#3c5892',GradientType=0 ); /* IE6-9 */
   overflow: hidden;
 }
+
+/* #endregion colors */
+
+/* #region scrollbar */
+
+/* custom scrollbar below works only in Chrome as Firefox or IE/Edge does not support it */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+:hover > ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+/* #endregion scrollbar */

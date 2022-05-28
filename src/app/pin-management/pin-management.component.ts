@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { Pin } from '../classes/pin';
 import { PinService } from '../pin-service/pin.service';
+import * as fromRoot from '@store/reducers';
+import * as fromPins from '@store/reducers/pin.reducer';
+import { RequestPinList } from '@store/actions/pin.actions';
 
 @Component({
   selector: 'app-pin-management',
@@ -11,11 +15,17 @@ import { PinService } from '../pin-service/pin.service';
 export class PinManagementComponent implements OnInit {
   public pins$: Observable<Pin[]>;
 
-  constructor(public pinService: PinService) {}
+  constructor(
+    private readonly _store: Store<fromRoot.State>,
+    public pinService: PinService
+  ) {}
 
   ngOnInit(): void {
-    this.pins$ = this.pinService
-      .getPinList(1, 1)
-      .pipe(map((pinList) => pinList.pins));
+    this._store.dispatch(new RequestPinList({ id: 1, listVersion: 1 }));
+
+    this.pins$ = this._store.pipe(
+      select((store) => store.pins),
+      select(fromPins.pinsSelector)
+    );
   }
 }

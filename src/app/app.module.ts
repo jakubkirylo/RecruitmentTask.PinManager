@@ -7,6 +7,11 @@ import { PinManagementComponent } from './pin-management/pin-management.componen
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from '@store/reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { PinEffects } from '@store/effects/pin.effects';
+import { StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [AppComponent, PinManagementComponent],
@@ -16,6 +21,9 @@ import { MatButtonModule } from '@angular/material/button';
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument({}), // configuration for redux sanitization
+    EffectsModule.forRoot([PinEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

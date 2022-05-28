@@ -1,8 +1,3 @@
-/* :host {
-  overflow: hidden;
-}
- */
-
 .pin-mgmt-container {
   display: grid;
   grid-template-columns: 30px 1fr 30px;
@@ -48,7 +43,7 @@
   grid-area: pin-content;
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: repeat(3, 4fr);
+  grid-template-columns: 2fr 1fr 1fr 4fr;
   align-items: center;
 }
 
@@ -72,5 +67,9 @@
 }
 
 .pin-row:hover {
-  background: lightgray;
+  background: #d5f5ff;
+}
+
+.pin-row:hover .pin-alias {
+  color: var(--tedee-indigo);
 }

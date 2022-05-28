@@ -3,7 +3,7 @@
     <div class="pin-header">
       <div class="pin-header-title">Door for apartment 23</div>
       <div class="pin-header-actions">
-        <button mat-raised-button color="accent">New PIN</button>
+        <button mat-raised-button class="indigo">New PIN</button>
       </div>
     </div>
     <div class="pin-content">
@@ -15,7 +15,7 @@
       <div class="pin-table">
         <div class="pin-row" *ngFor="let row of pins$ | async; let i = index">
           <div class="pin-table-columns pin-basic">
-            <div class="pin-row-text">{{ row.alias }}</div>
+            <div class="pin-row-text pin-alias">{{ row.alias }}</div>
             <div class="pin-row-text">
               {{ row.startDate | date: "dd/MM/yyyy" }}
             </div>
