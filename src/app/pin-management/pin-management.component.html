@@ -1,7 +1,7 @@
 <div class="pin-mgmt-container">
   <div class="pin-mgmt-content">
     <div class="pin-header">
-      <div class="pin-header-title">Door for apartment 23</div>
+      <div class="pin-header-title header-title">Door for apartment 23</div>
       <div class="pin-header-actions">
         <button mat-raised-button class="indigo">New PIN</button>
       </div>
@@ -13,7 +13,11 @@
         <div>To</div>
       </div>
       <div class="pin-table">
-        <div class="pin-row" *ngFor="let row of pins$ | async; let i = index">
+        <div
+          class="pin-row"
+          *ngFor="let row of pins$ | async; let i = index"
+          (click)="openPinDetailsDialog(row)"
+        >
           <div class="pin-table-columns pin-basic">
             <div class="pin-row-text pin-alias">{{ row.alias }}</div>
             <div class="pin-row-text">

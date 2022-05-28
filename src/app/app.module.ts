@@ -11,10 +11,16 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from '@store/reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { PinEffects } from '@store/effects/pin.effects';
-import { StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { PinDetailsDialogComponent } from './pin-management/pin-details-dialog/pin-details-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [AppComponent, PinManagementComponent],
+  declarations: [
+    AppComponent,
+    PinManagementComponent,
+    PinDetailsDialogComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,6 +30,7 @@ import { StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({}), // configuration for redux sanitization
     EffectsModule.forRoot([PinEffects]),
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

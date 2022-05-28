@@ -26,13 +26,17 @@
 
 .pin-header-title {
   grid-area: pin-header-title;
-  font: normal 32px Source Sans Pro, Roboto, "Helvetica Neue", sans-serif;
   align-self: center;
 }
 
 .pin-header-actions {
   grid-area: pin-header-actions;
   place-self: center;
+}
+
+.mat-raised-button {
+  width: 88px;
+  height: 41px;
 }
 
 .pin-content {
@@ -63,7 +67,6 @@
 
 .pin-row-text {
   color: black;
-  font-weight: 500;
 }
 
 .pin-row:hover {

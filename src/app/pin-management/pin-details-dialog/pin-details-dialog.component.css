@@ -1,0 +1,24 @@
+.pin-details-container {
+  display: grid;
+  grid-template-rows: 50px auto 50px;
+  grid-template-areas:
+    "pin-details-header"
+    "pin-details-content"
+    "pin-details-actions";
+  height: 100%;
+}
+
+.pin-details-header {
+  grid-area: pin-details-header;
+  color: #253b65;
+}
+
+.pin-details-content {
+  grid-area: pin-details-content;
+  background-color: brown;
+}
+
+.pin-details-actions {
+  grid-area: pin-details-actions;
+  background-color: darkgreen;
+}

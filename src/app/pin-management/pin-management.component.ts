@@ -6,6 +6,8 @@ import { PinService } from '../pin-service/pin.service';
 import * as fromRoot from '@store/reducers';
 import * as fromPins from '@store/reducers/pin.reducer';
 import { RequestPinList } from '@store/actions/pin.actions';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { PinDetailsDialogComponent } from './pin-details-dialog/pin-details-dialog.component';
 
 @Component({
   selector: 'app-pin-management',
@@ -17,7 +19,8 @@ export class PinManagementComponent implements OnInit {
 
   constructor(
     private readonly _store: Store<fromRoot.State>,
-    public pinService: PinService
+    public pinService: PinService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -27,5 +30,19 @@ export class PinManagementComponent implements OnInit {
       select((store) => store.pins),
       select(fromPins.pinsSelector)
     );
+  }
+
+  public openPinDetailsDialog(pin: Pin): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '450px';
+    dialogConfig.height = '100%';
+    dialogConfig.position = {
+      top: '0',
+      right: '0',
+    };
+
+    const dialogRef = this.dialog.open(PinDetailsDialogComponent, dialogConfig);
+    dialogRef.componentInstance.pin = pin;
+    dialogRef.componentInstance.dialogRef = dialogRef;
   }
 }
