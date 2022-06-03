@@ -1,3 +1,24 @@
+# General Notes from dev
+Not all functionalities from assignment tasks has been implemented.
+
+**What has been done**:
+<br><li> Responsive layout based on CSS grid
+<br><li> Components for displaying and adding / deleted / viewing pin
+<br><li> Dummy service to mock pins entities and CRUD operations
+<br><li> Ngrx store (actions, effects, reducers)
+<br><li> Unit testing pin.reducer as proof of having some knowledge in this area
+
+**Missing**:
+<br><li> Form validation
+<br><li> Pin code generator and validator
+<br><li> Editing pin entity has not been implemented (mentioned in overview but not in requirements). Basically I created PinDetailsDialogComponent which can be used for adding / editing / removing actions
+<br><li> Settings dates when creating new pin entity - I stuck with that and unfortunately could not spent more time assignment.
+
+<br> 
+
+
+
+
 # Tedee.Pin
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.7.
