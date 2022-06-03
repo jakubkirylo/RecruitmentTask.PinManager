@@ -1,9 +1,12 @@
 import { Action } from '@ngrx/store';
-import { PinList } from 'src/app/classes/pin';
+import { Pin, PinList } from 'src/app/classes/pin';
 
 export enum PinActionTypes {
   RequestPinList = '[Pin] Request Pin List',
   PinListLoaded = '[Pin] Pin List Loaded',
+  RequestPinDelete = '[Pin] Request Pin Delete',
+  PinCreateRequested = '[Pin] Pin Create Requested',
+  PinCreated = '[Pin] Pin Created',
 }
 
 export class RequestPinList implements Action {
@@ -18,4 +21,27 @@ export class PinListLoaded implements Action {
   constructor(public payload: { pins: PinList }) {}
 }
 
-export type PinActions = RequestPinList | PinListLoaded;
+export class RequestPinDelete implements Action {
+  readonly type = PinActionTypes.RequestPinDelete;
+
+  constructor(public payload: { pin: Pin }) {}
+}
+
+export class PinCreateRequested implements Action {
+  readonly type = PinActionTypes.PinCreateRequested;
+
+  constructor(public payload: { pinName: string }) {}
+}
+
+export class PinCreated implements Action {
+  readonly type = PinActionTypes.PinCreated;
+
+  constructor(public payload: { pin: Pin }) {}
+}
+
+export type PinActions =
+  | RequestPinList
+  | PinListLoaded
+  | RequestPinDelete
+  | PinCreateRequested
+  | PinCreated;

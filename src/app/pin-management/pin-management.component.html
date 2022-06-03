@@ -3,14 +3,16 @@
     <div class="pin-header">
       <div class="pin-header-title header-title">Door for apartment 23</div>
       <div class="pin-header-actions">
-        <button mat-raised-button class="indigo">New PIN</button>
+        <button mat-raised-button class="indigo" (click)="createPin()">
+          New PIN
+        </button>
       </div>
     </div>
     <div class="pin-content">
       <div class="pin-table-columns">
-        <div>Name</div>
-        <div>From</div>
-        <div>To</div>
+        <div class="column-header">Name</div>
+        <div class="column-header">From</div>
+        <div class="column-header">To</div>
       </div>
       <div class="pin-table">
         <div

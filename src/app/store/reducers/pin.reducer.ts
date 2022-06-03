@@ -23,6 +23,9 @@ export function reducer(
         adapter.removeAll(state)
       );
     }
+    case PinActionTypes.PinCreated: {
+      return adapter.upsertOne(action.payload.pin, state);
+    }
   }
   return state;
 }
@@ -33,10 +36,3 @@ export const { selectIds, selectEntities, selectAll, selectTotal } =
 export const pinsSelector = createSelector(selectAll, (array) =>
   R.sortBy((o: Pin) => o.alias, array)
 );
-
-// export const sortedUsersSelector: MemoizedSelector<
-//     EntityState<ManageableUser>,
-//     ManageableUser[]
-// > = createSelector(selectAll, items => {
-//     return R.sortBy((o: ManageableUser) => o.email, items);
-// });

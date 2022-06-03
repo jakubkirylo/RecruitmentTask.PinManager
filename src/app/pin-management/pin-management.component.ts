@@ -5,7 +5,7 @@ import { Pin } from '../classes/pin';
 import { PinService } from '../pin-service/pin.service';
 import * as fromRoot from '@store/reducers';
 import * as fromPins from '@store/reducers/pin.reducer';
-import { RequestPinList } from '@store/actions/pin.actions';
+import { PinCreateRequested, RequestPinList } from '@store/actions/pin.actions';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { PinDetailsDialogComponent } from './pin-details-dialog/pin-details-dialog.component';
 
@@ -33,6 +33,34 @@ export class PinManagementComponent implements OnInit {
   }
 
   public openPinDetailsDialog(pin: Pin): void {
+    const dialogRef = this.dialog.open(
+      PinDetailsDialogComponent,
+      this.getDialogConfig()
+    );
+    dialogRef.componentInstance.pin = pin;
+    dialogRef.componentInstance.dialogRef = dialogRef;
+  }
+
+  public createPin(): void {
+    const dialogRef = this.dialog.open(
+      PinDetailsDialogComponent,
+      this.getDialogConfig()
+    );
+    this._store.dispatch(new PinCreateRequested({ pinName: 'New pin' }));
+
+    const newPin: Pin = {
+      id: 99,
+      alias: 'test',
+      code: 123456, //generate code
+      startDate: undefined,
+      endDate: undefined,
+    };
+    dialogRef.componentInstance.pin = newPin;
+    dialogRef.componentInstance.newPin = true;
+    dialogRef.componentInstance.dialogRef = dialogRef;
+  }
+
+  private getDialogConfig(): MatDialogConfig {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '450px';
     dialogConfig.height = '100%';
@@ -41,8 +69,6 @@ export class PinManagementComponent implements OnInit {
       right: '0',
     };
 
-    const dialogRef = this.dialog.open(PinDetailsDialogComponent, dialogConfig);
-    dialogRef.componentInstance.pin = pin;
-    dialogRef.componentInstance.dialogRef = dialogRef;
+    return dialogConfig;
   }
 }

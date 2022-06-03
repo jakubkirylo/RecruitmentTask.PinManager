@@ -1,3 +1,28 @@
+* {
+  font-family: Lato, Source Sans Pro, Roboto, Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: #22345a;
+}
+
+/* fonts */
+:host ::ng-deep .mat-button-wrapper {
+  color: #ffffff;
+}
+
+.column-header {
+  color: #ffffff;
+}
+
+.pin-row-text {
+  color: black;
+}
+
+.pin-row:hover .pin-alias {
+  color: var(--tedee-indigo);
+}
+
+/* layout */
+
 .pin-mgmt-container {
   display: grid;
   grid-template-columns: 30px 1fr 30px;
@@ -27,6 +52,7 @@
 .pin-header-title {
   grid-area: pin-header-title;
   align-self: center;
+  color: #ffffff;
 }
 
 .pin-header-actions {
@@ -65,14 +91,6 @@
   color: black;
 }
 
-.pin-row-text {
-  color: black;
-}
-
 .pin-row:hover {
   background: #d5f5ff;
-}
-
-.pin-row:hover .pin-alias {
-  color: var(--tedee-indigo);
 }

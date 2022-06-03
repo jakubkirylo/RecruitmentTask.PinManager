@@ -1,3 +1,23 @@
+/* font */
+:host ::ng-deep .pin-act-btn > span {
+  color: #f44336;
+}
+
+:host ::ng-deep .mat-focused .mat-form-field-label {
+  color: #22345a;
+}
+
+:host ::ng-deep .mat-form-field-label {
+  color: #22345a;
+  font-weight: bold;
+}
+
+mat-form-field.mat-form-field {
+  font-size: 16px;
+  color: #1f1f1f;
+}
+
+/* layout */
 .pin-details-container {
   display: grid;
   grid-template-rows: 50px auto 50px;
@@ -15,10 +35,19 @@
 
 .pin-details-content {
   grid-area: pin-details-content;
-  background-color: brown;
+  color: black;
+  padding: 20px 10px;
 }
 
 .pin-details-actions {
   grid-area: pin-details-actions;
-  background-color: darkgreen;
+  justify-self: end;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.mat-form-field-flex {
+  background-color: rgba(34, 52, 90, 0.15);
 }

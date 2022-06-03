@@ -1,5 +1,76 @@
 <div class="pin-details-container">
   <div class="pin-details-header header-title">PIN details</div>
-  <div class="pin-details-content">Content</div>
-  <div class="pin-details-actions">Actions</div>
+  <div class="pin-details-content">
+    <div>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Name:</mat-label>
+        <input
+          matInput
+          placeholder="Name"
+          [(ngModel)]="pin.alias"
+          class="pin-input"
+          [disabled]="!newPin"
+        />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Pin:</mat-label>
+        <input
+          matInput
+          placeholder="Pin"
+          [(ngModel)]="pin.code"
+          class="pin-input"
+          [disabled]="!newPin"
+        />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Start date:</mat-label>
+        <input
+          matInput
+          placeholder="Start date"
+          [ngModel]="getStartDate"
+          class="pin-input"
+          [disabled]="!newPin"
+        />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>End date:</mat-label>
+        <input
+          matInput
+          placeholder="End date"
+          [ngModel]="getEndDate"
+          class="pin-input"
+          [disabled]="!newPin"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="pin-details-actions">
+    <button
+      *ngIf="!newPin"
+      class="pin-act-btn"
+      mat-stroked-button
+      color="warn"
+      (click)="deletePin()"
+    >
+      Delete
+    </button>
+    <button
+      *ngIf="newPin"
+      class="pin-act-btn"
+      mat-stroked-button
+      color="warn"
+      (click)="createPin()"
+    >
+      Create
+    </button>
+  </div>
 </div>

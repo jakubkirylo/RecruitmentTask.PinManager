@@ -14,6 +14,9 @@ import { PinEffects } from '@store/effects/pin.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { PinDetailsDialogComponent } from './pin-management/pin-details-dialog/pin-details-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     StoreDevtoolsModule.instrument({}), // configuration for redux sanitization
     EffectsModule.forRoot([PinEffects]),
     MatDialogModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
