@@ -11,3 +11,9 @@ export const reducers: ActionReducerMap<State, PinActions> = {
 };
 
 export const reducer = combineReducers(reducers);
+
+export const getInitialTestingState = (): State => {
+  return {
+    pins: fromPins.initialState,
+  };
+};

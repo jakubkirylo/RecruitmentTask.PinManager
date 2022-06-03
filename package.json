@@ -26,6 +26,7 @@
     "@ngrx/store": "^13.2.0",
     "@ngrx/store-devtools": "^13.2.0",
     "@types/ramda": "^0.28.13",
+    "deep-freeze": "^0.0.1",
     "moment": "^2.29.3",
     "ramda": "^0.28.0",
     "rxjs": "~7.5.0",

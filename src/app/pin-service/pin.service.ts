@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Pin, PinList } from '../classes/pin';
@@ -7,7 +6,7 @@ import { Pin, PinList } from '../classes/pin';
   providedIn: 'root',
 })
 export class PinService {
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   private pinData = {
     listVersion: 0,
@@ -71,10 +70,9 @@ export class PinService {
     ],
   };
 
-  // setup proxy https://blog.angulartraining.com/fake-your-angular-backend-until-you-make-it-8d145f713e14
+  // API endpoints mocked
   public getPinList(id: number, listVersion: number): Observable<PinList> {
     return of(this.pinData);
-    // const pins = this.http.get('http://localhost:3000/api/teams');
   }
 
   public deletePin(pin: Pin): Observable<boolean> {
@@ -89,14 +87,19 @@ export class PinService {
     return of(false);
   }
 
-  public createPin(name: string, id: number): Observable<Pin> {
-    // TODO: logic for creating new pin, evaluate code, etc.
-    return of({
+  public savePin(pin: Pin): Observable<Pin> {
+    return of(pin);
+  }
+
+  // local service
+  public createPin(name: string, id: number): Pin {
+    // TODO: logic for creating new pin, evaluate code, default values etc.
+    return {
       id: id,
       alias: name,
       code: 445566,
       startDate: new Date(2022, 0, 1),
       endDate: new Date(2022, 11, 31),
-    });
+    };
   }
 }

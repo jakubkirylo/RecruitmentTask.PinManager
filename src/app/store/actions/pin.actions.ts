@@ -5,6 +5,7 @@ export enum PinActionTypes {
   RequestPinList = '[Pin] Request Pin List',
   PinListLoaded = '[Pin] Pin List Loaded',
   RequestPinDelete = '[Pin] Request Pin Delete',
+  PinDeleted = '[Pin] Pin Deleted',
   PinCreateRequested = '[Pin] Pin Create Requested',
   PinCreated = '[Pin] Pin Created',
 }
@@ -27,10 +28,16 @@ export class RequestPinDelete implements Action {
   constructor(public payload: { pin: Pin }) {}
 }
 
+export class PinDeleted implements Action {
+  readonly type = PinActionTypes.PinDeleted;
+
+  constructor(public payload: { pin: Pin }) {}
+}
+
 export class PinCreateRequested implements Action {
   readonly type = PinActionTypes.PinCreateRequested;
 
-  constructor(public payload: { pinName: string }) {}
+  constructor(public payload: { pin: Pin }) {}
 }
 
 export class PinCreated implements Action {
@@ -43,5 +50,6 @@ export type PinActions =
   | RequestPinList
   | PinListLoaded
   | RequestPinDelete
+  | PinDeleted
   | PinCreateRequested
   | PinCreated;

@@ -10,7 +10,7 @@ const adapter: EntityAdapter<Pin> = createEntityAdapter<Pin>();
 
 const emptyState: State = adapter.getInitialState({});
 
-const initialState: State = { ...emptyState };
+export const initialState: State = { ...emptyState };
 
 export function reducer(
   state: State = initialState,
@@ -22,6 +22,9 @@ export function reducer(
         action.payload.pins.pins,
         adapter.removeAll(state)
       );
+    }
+    case PinActionTypes.PinDeleted: {
+      return adapter.removeOne(action.payload.pin.id, state);
     }
     case PinActionTypes.PinCreated: {
       return adapter.upsertOne(action.payload.pin, state);

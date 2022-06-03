@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { select, Store } from '@ngrx/store';
 import {
   PinActionTypes,
   PinCreated,
   PinCreateRequested,
+  PinDeleted,
   PinListLoaded,
   RequestPinDelete,
   RequestPinList,
 } from '@store/actions/pin.actions';
-import { catchError, EMPTY, map, switchMap, tap, withLatestFrom } from 'rxjs';
+import { catchError, EMPTY, map, switchMap, tap } from 'rxjs';
 import { PinService } from 'src/app/pin-service/pin.service';
-import * as fromRoot from '@store/reducers';
 
 @Injectable()
 export class PinEffects {
@@ -19,7 +18,7 @@ export class PinEffects {
     this.actions$.pipe(
       ofType<RequestPinList>(PinActionTypes.RequestPinList),
       switchMap((action) =>
-        this.pinService
+        this._pinService
           .getPinList(action.payload.id, action.payload.listVersion)
           .pipe(
             map((pins) => new PinListLoaded({ pins })),
@@ -37,8 +36,8 @@ export class PinEffects {
     this.actions$.pipe(
       ofType<RequestPinDelete>(PinActionTypes.RequestPinDelete),
       switchMap((action) =>
-        this.pinService.deletePin(action.payload.pin).pipe(
-          map(() => new RequestPinList({ id: 1, listVersion: 1 })),
+        this._pinService.deletePin(action.payload.pin).pipe(
+          map(() => new PinDeleted({ pin: action.payload.pin })),
           tap(
             () => console.log('pin deleted') //or any other kind of notification for user
           ),
@@ -55,9 +54,8 @@ export class PinEffects {
   public pinCreateRequested$ = createEffect(() =>
     this.actions$.pipe(
       ofType<PinCreateRequested>(PinActionTypes.PinCreateRequested),
-      withLatestFrom(this._store$.pipe(select((state) => state.pins))),
-      switchMap(([action, pins]) =>
-        this.pinService.createPin(action.payload.pinName, 99).pipe(
+      switchMap((action) =>
+        this._pinService.savePin(action.payload.pin).pipe(
           map((pin) => new PinCreated({ pin })),
           tap(
             () => console.log('pin created') //or any other kind of notification for user
@@ -72,9 +70,5 @@ export class PinEffects {
     )
   );
 
-  constructor(
-    private actions$: Actions,
-    private pinService: PinService,
-    private _store$: Store<fromRoot.State>
-  ) {}
+  constructor(private actions$: Actions, private _pinService: PinService) {}
 }
