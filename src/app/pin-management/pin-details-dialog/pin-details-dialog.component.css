@@ -3,6 +3,10 @@
   color: #f44336;
 }
 
+:host ::ng-deep .mat-button-wrapper {
+  color: #ffffff;
+}
+
 :host ::ng-deep .mat-focused .mat-form-field-label {
   color: #22345a;
 }
