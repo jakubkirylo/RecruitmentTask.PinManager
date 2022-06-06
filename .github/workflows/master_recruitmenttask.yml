@@ -52,4 +52,4 @@ jobs:
           app-name: "RecruitmentTask"
           slot-name: "Production"
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C86D5EB44B4E4591820D61C766565A66 }}
-          package: ./dist/RecruitmentTask
+          package: .
