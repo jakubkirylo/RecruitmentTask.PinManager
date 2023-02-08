@@ -1,6 +1,8 @@
 # General Notes from dev
 Not all functionalities from assignment tasks has been implemented.
 
+App: https://recruitmenttask-8b368.web.app/
+
 **What has been done**:
 <br><li> Responsive layout based on CSS grid
 <br><li> Components for displaying and adding / deleted / viewing pin
